@@ -1,27 +1,31 @@
 @import "tailwindcss";
 
 :root {
-  --gold: #c9a84c;
-  --gold-light: #e2c97e;
-  --gold-dark: #a68a3a;
-  --dark-bg: #0c0c0c;
-  --dark-card: #1a1a1a;
-  --dark-card-hover: #222222;
-  --dark-border: #2a2a2a;
-  --text-primary: #f5f5f5;
-  --text-secondary: #a0a0a0;
+  --page-bg: #F5F7F9;
+  --white: #FFFFFF;
+  --black: #000000;
+  --text-dark: #2B2B2B;
+  --text-gray: #7A7A7A;
+  --text-light-gray: #bfbfbf;
+  --hero-overlay: #575050;
+  --faq-bg: #fcfcfc;
+  --faq-border: #e2e2e2;
+  --faq-active: #00ce1b;
+  --footer-bg: rgba(122, 122, 122, 0.33);
+  --divider: #000000;
 }
 
 @theme inline {
-  --color-gold: var(--gold);
-  --color-gold-light: var(--gold-light);
-  --color-gold-dark: var(--gold-dark);
-  --color-dark-bg: var(--dark-bg);
-  --color-dark-card: var(--dark-card);
-  --color-dark-card-hover: var(--dark-card-hover);
-  --color-dark-border: var(--dark-border);
-  --color-text-primary: var(--text-primary);
-  --color-text-secondary: var(--text-secondary);
+  --color-page-bg: var(--page-bg);
+  --color-faq-bg: var(--faq-bg);
+  --color-faq-border: var(--faq-border);
+  --color-faq-active: var(--faq-active);
+  --color-footer-bg: var(--footer-bg);
+  --color-text-dark: var(--text-dark);
+  --color-text-gray: var(--text-gray);
+  --color-text-light-gray: var(--text-light-gray);
+  --color-hero-overlay: var(--hero-overlay);
+  --color-divider: var(--divider);
 }
 
 * {
@@ -33,60 +37,30 @@ html {
 }
 
 body {
-  background: var(--dark-bg);
-  color: var(--text-primary);
-  font-family: 'Heebo', 'Arial', sans-serif;
+  background: var(--page-bg);
+  color: var(--text-dark);
+  font-family: 'Rubik', 'Helvetica', 'Arial', sans-serif;
   direction: rtl;
-}
-
-/* Gallery scrollbar */
-.gallery-scroll::-webkit-scrollbar {
-  height: 6px;
-}
-.gallery-scroll::-webkit-scrollbar-track {
-  background: var(--dark-card);
-  border-radius: 3px;
-}
-.gallery-scroll::-webkit-scrollbar-thumb {
-  background: var(--gold-dark);
-  border-radius: 3px;
-}
-
-/* Gold gradient text */
-.gold-gradient-text {
-  background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Shimmer animation for hero */
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-.gold-shimmer {
-  background: linear-gradient(90deg, var(--gold-dark), var(--gold-light), var(--gold), var(--gold-dark));
-  background-size: 200% auto;
-  animation: shimmer 3s linear infinite;
 }
 
 /* FAQ accordion animation */
 .faq-content {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+  transition: max-height 0.3s ease-out;
 }
 .faq-content.open {
   max-height: 500px;
 }
 
-/* Lightbox overlay */
-.lightbox-overlay {
-  animation: fadeIn 0.2s ease-out;
+/* Waze tada animation */
+@keyframes tada {
+  0% { transform: scale(1); }
+  10%, 20% { transform: scale(0.9) rotate(-3deg); }
+  30%, 50%, 70%, 90% { transform: scale(1.1) rotate(3deg); }
+  40%, 60%, 80% { transform: scale(1.1) rotate(-3deg); }
+  100% { transform: scale(1); }
 }
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+.animate-tada {
+  animation: tada 1.5s ease infinite;
 }

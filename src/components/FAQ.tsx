@@ -17,7 +17,7 @@ const faqs = [
   },
   {
     q: "האם הדירה מתאימה לזוג?",
-    a: "גודל הדירה כ-78 מ\u0022ר והיא מתאימה ליחיד או לזוג.",
+    a: 'גודל הדירה כ-78 מ"ר והיא מתאימה ליחיד או לזוג.',
   },
   {
     q: "לכמה זמן חוזה השכירות?",
@@ -41,48 +41,52 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="py-20 px-4 bg-dark-card/50">
-      <div className="max-w-3xl mx-auto">
-        <div className="text-center mb-14">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            <span className="gold-gradient-text">שאלות נפוצות</span>
+    <section id="faq" className="py-16 px-4">
+      <div className="max-w-[1140px] mx-auto">
+        {/* Section header */}
+        <div className="text-center mb-4">
+          <h2 className="text-3xl sm:text-[45px] font-semibold text-black">
+            שאלות ותשובות
           </h2>
-          <div className="w-20 h-0.5 bg-gold/40 mx-auto" />
+          <p className="text-text-light-gray text-[15px] font-light mt-2">
+            כל מה שרציתם לשאול...
+          </p>
         </div>
 
-        <div className="space-y-3">
+        {/* FAQ items */}
+        <div className="space-y-10 sm:space-y-[55px] mt-10 sm:mt-[55px]">
           {faqs.map((faq, i) => (
             <div
               key={i}
-              className="bg-dark-card border border-dark-border rounded-xl overflow-hidden hover:border-gold/20 transition-colors"
+              className="bg-faq-bg border border-faq-border p-8 sm:p-[45px]"
             >
               <button
                 onClick={() => toggle(i)}
-                className="w-full flex items-center justify-between p-5 text-right"
+                className="w-full flex items-center justify-between text-right"
               >
-                <span className="font-bold text-text-primary text-lg pr-0 pl-4">
+                <span
+                  className={`font-bold text-xl sm:text-2xl md:text-[34px] leading-tight transition-colors duration-300 ${
+                    openIndex === i ? "text-faq-active" : "text-black"
+                  }`}
+                >
                   {faq.q}
                 </span>
                 <svg
-                  className={`w-5 h-5 text-gold flex-shrink-0 transition-transform duration-300 ${
-                    openIndex === i ? "rotate-180" : ""
+                  className={`w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0 mr-4 transition-all duration-300 ${
+                    openIndex === i
+                      ? "text-faq-active rotate-90"
+                      : "text-black -rotate-90"
                   }`}
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
+                  fill="currentColor"
+                  viewBox="0 0 320 512"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
+                  <path d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z" />
                 </svg>
               </button>
               <div
                 className={`faq-content ${openIndex === i ? "open" : ""}`}
               >
-                <p className="px-5 pb-5 text-text-secondary leading-relaxed">
+                <p className="text-black text-base sm:text-lg font-light leading-relaxed mt-6">
                   {faq.a}
                 </p>
               </div>
