@@ -41,52 +41,55 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="py-16 px-4">
-      <div className="max-w-[1140px] mx-auto">
-        {/* Section header */}
-        <div className="text-center mb-4">
-          <h2 className="text-3xl sm:text-[45px] font-semibold text-black">
-            שאלות ותשובות
+    <section id="faq" className="py-20 px-4 bg-dark-card/50">
+      <div className="max-w-3xl mx-auto">
+        <div className="text-center mb-14">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <span className="gold-gradient-text">שאלות ותשובות</span>
           </h2>
-          <p className="text-text-light-gray text-[15px] font-light mt-2">
+          <div className="w-20 h-0.5 bg-gold/40 mx-auto mb-6" />
+          <p className="text-text-secondary text-lg">
             כל מה שרציתם לשאול...
           </p>
         </div>
 
-        {/* FAQ items */}
-        <div className="space-y-10 sm:space-y-[55px] mt-10 sm:mt-[55px]">
+        <div className="space-y-3">
           {faqs.map((faq, i) => (
             <div
               key={i}
-              className="bg-faq-bg border border-faq-border p-8 sm:p-[45px]"
+              className="bg-dark-card border border-dark-border rounded-xl overflow-hidden hover:border-gold/20 transition-colors"
             >
               <button
                 onClick={() => toggle(i)}
-                className="w-full flex items-center justify-between text-right"
+                className="w-full flex items-center justify-between p-5 text-right"
               >
                 <span
-                  className={`font-bold text-xl sm:text-2xl md:text-[34px] leading-tight transition-colors duration-300 ${
-                    openIndex === i ? "text-faq-active" : "text-black"
+                  className={`font-bold text-lg pr-0 pl-4 transition-colors duration-300 ${
+                    openIndex === i ? "text-gold" : "text-text-primary"
                   }`}
                 >
                   {faq.q}
                 </span>
                 <svg
-                  className={`w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0 mr-4 transition-all duration-300 ${
-                    openIndex === i
-                      ? "text-faq-active rotate-90"
-                      : "text-black -rotate-90"
+                  className={`w-5 h-5 flex-shrink-0 transition-transform duration-300 ${
+                    openIndex === i ? "text-gold rotate-180" : "text-gold"
                   }`}
-                  fill="currentColor"
-                  viewBox="0 0 320 512"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
                 >
-                  <path d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
                 </svg>
               </button>
               <div
                 className={`faq-content ${openIndex === i ? "open" : ""}`}
               >
-                <p className="text-black text-base sm:text-lg font-light leading-relaxed mt-6">
+                <p className="px-5 pb-5 text-text-secondary leading-relaxed">
                   {faq.a}
                 </p>
               </div>
